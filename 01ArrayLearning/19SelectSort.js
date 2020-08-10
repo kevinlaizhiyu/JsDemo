@@ -30,27 +30,27 @@ for (var i = 1; i < 20; i++) {
     var num = parseInt(Math.random() * 100);
     arr.push(num)
 }
-console.log('original array is ===>',arr)
+console.log('original array is ===>', arr)
 //快速排序
 function QuickSort(arr) {
-    if (Array.isArray(arr)){
-        for(var i=0;i<arr.length;i++){
+    if (Array.isArray(arr)) {
+        for (var i = 0; i < arr.length; i++) {
             var minIndex = i;
             var minValue = arr[minIndex];
-            for(var j=i+1;j<arr.length;j++){
-                if(arr[j]<minValue){
-                    minIndex=j;
-                    minValue=arr[j]
+            for (var j = i + 1; j < arr.length; j++) {
+                if (arr[j] < minValue) {
+                    minIndex = j;
+                    minValue = arr[j]
                 }
             }
-            if(minIndex !== i){
+            if (minIndex !== i) {
                 var temp = arr[i];
                 arr[i] = arr[minIndex];
                 arr[minIndex] = temp;
             }
         }
-        console.log('After SlectSort ===> ',arr)
-    }else{
+        console.log('After SlectSort ===> ', arr)
+    } else {
         console.log('请输入数组作为参数')
     }
 }
