@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象下面的属性</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            border-radius: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./02getElementsFunction.js"></script>
+    <div id="box"></div> 
+    <script>
+        //$('#box').onmousemove = function (ev) {
+            // var ev = ev || window.event;
+            // var oBox =  $('#box')
+            // $('#box').style.left=ev.clientX-$('#box').offsetWidth/2+'px';
+            // $('#box').style.top=ev.clientY-$('#box').offsetHeight/2+'px';
+            // console.log('鼠标相对文档的',ev.pageX+'|'+ev.pageY)
+            // console.log('鼠标相对与元素的偏移值', ev.offsetX + '|' + ev.offsetY)
+        //}
+        var arr = [];
+        var str=null;
+        document.onkeydown=function(ev){
+            var ev = ev || window.event;
+            // console.log(ev.which)
+            arr.push(ev.which)
+            str = arr.map((value)=>{
+                return String.fromCharCode(value)
+            }).join('')
+            $('#box').innerHTML=str.toLocaleLowerCase()
+        }
+    </script>
+</body>
+
+</html>

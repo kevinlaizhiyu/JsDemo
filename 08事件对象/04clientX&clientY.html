@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象下面的属性</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            border-radius: 20px;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <script src="./02getElementsFunction.js"></script>
+    <div id="box"></div>
+    <script>
+        document.onmousemove=function(ev){
+            var ev = ev || window.event;
+            var left= (ev.clientX-$('#box').offsetWidth/2)<0?0:ev.clientX-$('#box').offsetWidth/2;
+            var top = (ev.clientY-$('#box').offsetHeight/2)<0?0:ev.clientY-$('#box').offsetHeight/2
+            $('#box').style.left=left+'px';
+            $('#box').style.top=top+'px';
+        }
+    </script>
+</body>
+</html>

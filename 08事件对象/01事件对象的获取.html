@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='box'>
+        my name is kevin
+    </div>
+    <script>
+        var oBox = document.querySelector('#box');
+        oBox.onclick=function(ev){
+            var ev = ev || window.event;
+            console.log(ev);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>腾讯面试倒计时</title>
+    <style>
+        #center {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            /* background: yellow; */
+            background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597341956775&di=acf69e0b8ac79d5e0c1dfcd7b0b0d77c&imgtype=0&src=http%3A%2F%2Fp0.ifengimg.com%2Fa%2F2017_12%2F854f1644dfd981a_size154_w500_h314.jpg');
+            background-size: 100%;
+            border-radius: 50px;
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .timeContainer {
+            width: 100%;
+            height: 100px;
+            font-size: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+            opacity: 0.6;
+            border-radius: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="center">
+        <div class="timeContainer">
+
+        </div>
+    </div>
+    <script src="./02getElementsFunction.js"></script>
+    <script>
+        function calculate() {
+            var d1 = new Date('2020-10-1 18:00:00');
+            var d2 = new Date();
+            //var dayTime1 = d1.toLocaleDateString();
+            //var dayTime2 = d2.toLocaleDateString();//注意，转化成本地时间之后不能在进行加减计算，否则出来的结果就是NAN
+
+            var Section = d1 - d2;
+            var Seconds = parseInt(Section / 1000)
+
+            var day = parseInt(Seconds / 86400)
+            var hours = parseInt((Seconds % 86400) / 3600)
+            var minutes = parseInt(((Seconds % 86400) % 3600) / 60)
+            var sec = parseInt((((Seconds % 86400) % 3600) % 60)) < 10 ? '0' + parseInt((((Seconds % 86400) % 3600) % 60)) : parseInt((((Seconds % 86400) % 3600) % 60));
+            var str = '闭关还剩下' + day + '天' + hours + '小时' + minutes + '分钟' + sec + '秒';
+
+            var box = document.querySelector('body #center .timeContainer')
+            box.innerHTML = str;
+            box.style.background = 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')';
+            
+        }
+        calculate();
+        setInterval(() => {
+            calculate()
+        }, 1000);
+
+    </script>
+
+</body>
+
+</html>

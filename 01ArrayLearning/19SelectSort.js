@@ -31,7 +31,7 @@ for (var i = 1; i < 20; i++) {
     arr.push(num)
 }
 console.log('original array is ===>', arr)
-//快速排序
+//选择排序
 function QuickSort(arr) {
     if (Array.isArray(arr)) {
         for (var i = 0; i < arr.length; i++) {

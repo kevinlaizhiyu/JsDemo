@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onload.js</title>
+    <style>
+        .box {
+            background: yellow;
+        }
+
+        div {
+            height: 650px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        function ScrollFn() {
+            var oBox = document.querySelector('.box');
+            for (var i = 0; i < 5; i++) {
+                var d = document.createElement('div')
+                d.setAttribute('class', 'newCreate');
+                document.body.insertBefore(d, oBox);
+                d.style.background = 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')';
+            }
+        }
+        ScrollFn();
+    </script>
+    <script>
+        window.onscroll = function () {
+            console.log('clientHeight', document.documentElement.clientHeight);
+            console.log('clientWidth', document.documentElement.clientWidth);
+            console.log('scrollTop', document.documentElement.scrollTop);
+            console.log('scrollLeft', document.documentElement.scrollLeft);
+        }
+    </script>
+</body>
+
+</html>

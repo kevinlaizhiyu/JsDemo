@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            width: 200px;
+            height: 80px;
+        }
+
+        .window {
+            width: 200px;
+            height: 200px;
+            background: rgb(0,0,0);
+            display: none;
+            border-radius: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">点击显示隐藏</button>
+    <div class="window"></div>
+
+    <script src="./02getElementsFunction.js"></script>
+    <script>
+        // function $(selector, all) {
+        //     return all ? document.querySelectorAll(selector) : document.querySelector(selector)
+        // }
+        $('button').onmouseover = function () {
+            $('.window').style.display = 'block';
+        }
+        $('button').onmouseout= function () {
+            $('.window').style.display = 'none';
+        }
+        $('button').onclick=()=>{
+            $('.window').style.background='rgb('+parseInt(Math.random()*255)+','+parseInt(Math.random()*255)+','+parseInt(Math.random()*255)+')';
+            $('.window').style['border-radius']= Math.random()*100+'px'
+        }
+
+    </script>
+</body>
+
+</html>

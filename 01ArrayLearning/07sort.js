@@ -1,4 +1,5 @@
 let arr = [23,34,78,111,334,856,364,99];
+console.log(arr)
 function Sort(){
     return arr.sort((a,b)=>{
         return a-b;
