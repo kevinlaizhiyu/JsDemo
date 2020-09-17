@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td {
+            width: 100px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+
+        }
+        .blue {
+            background-color: skyblue;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .purple {
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <tr v-for='(trItem, trIndex) in arr' v-bind:class='trIndex%2===0?colorStyle[selected][0]:colorStyle[selected][1]'>
+                <td v-for='(tdItem , tdIndex) in arr' v-if='trItem >= tdItem ? true : false'>
+                    {{tdItem}} x {{trItem}} = {{trItem*tdItem}}
+                </td>
+            </tr>
+        </table>
+
+        <select name="" id="" v-on:change='valueChange($event)'>
+            <option v-bind:value="index"  v-for='(item,index) in colorOption'>{{item}}</option>
+        </select>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var Component = new Vue({
+            el: '#app',
+            data: {
+                arr: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+                colorOption: ['蓝色 + 绿色', '黄色 + 红色', '橙色 + 紫色'],
+                selected:0,
+                colorStyle:[ ['blue','green'],['yellow','red'],['orange','purple']]
+            },
+            methods: {
+                valueChange(e){
+                 this.selected=e.target.value;   
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

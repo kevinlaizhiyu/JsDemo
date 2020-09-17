@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件流的相应的测试</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 300px;
+            background: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button>显示隐藏</button>
+    <div class="box"></div>
+    <script>
+        function $(selector,all){
+           return all?document.querySelectorAll(selector):document.querySelector(selector)
+        }
+    </script>
+    <script>
+        $('button').onclick=(ev)=>{
+            var ev = ev || window.event;
+            $('.box').style.display='block';
+            ev.stopPropagation()   //>IE8 最新的，效能最好的
+            //ev.cancelBubble=true;  // 都可以 效能相对不太好
+
+        }
+        document.documentElement.onclick=()=>{
+            $('.box').style.display='none'
+        }
+    </script>
+</body>
+</html>

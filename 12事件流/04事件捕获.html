@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件捕获</title>
+    <style>
+        .big{
+            width: 500px;
+            height: 500px;
+            border-radius: 100%;
+            background:yellow;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .middle{
+            width: 300px;
+            height: 300px;
+            border-radius: 100%;
+            background:red;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .small{
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            background:green;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="middle">
+            <div class="small">
+                目标元素
+            </div>
+        </div>
+    </div>
+    <script>
+        function $(selector,all){
+            return all ? document.querySelectorAll(selector):document.querySelector(selector)
+        }
+        function addEvent(obj,type,fn,bool){
+            obj.addEventListener?obj.addEventListener(type,fn,bool):obj.attachEvent('on'+type,fn)
+        }
+
+        var big = $('.big')
+        var middle = $('.middle')
+        var small = $('.small')
+
+       addEvent(big,'click',()=>{alert('big')},true)
+       addEvent(middle,'click',()=>{alert('middle')},true)
+       addEvent(small,'click',()=>{alert('samll')},true)
+       
+    </script>
+</body>
+</html>

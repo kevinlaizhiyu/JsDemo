@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>默认行为的阻止</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 300px;
+            background: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        function $(selector,all){
+            return all ? document.querySelectorAll(selector): document.querySelector(selector)
+        }
+
+        window.oncontextmenu=(ev)=>{
+            var ev = ev || window.event;
+            $('.box').style.cssText=`display:block;position:absolute;top:${ev.clientY}px;left:${ev.clientX}px`;
+            console.log(ev.clientX)
+            ev.preventDefault();
+        }   
+        document.onclick=()=>{
+            $('.box').style.display='none'
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 400px;
+            margin: 0 auto;
+            background: yellow;
+            display:flex;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+        </ul>
+    </div>
+    <script>
+        function $(selector,all){
+            return all?document.querySelectorAll(selector):document.querySelector(selector)
+        }
+
+        function addEvent(obj,type,fn,bool){
+            return obj.addEventListener ? obj.addEventListener(type,fn,bool):obj.attachEvent('on'+type,fn)
+        }
+
+        var oUl= $('ul');
+    
+        for(var i=0;i<15;i++){
+            var oli = document.createElement('li')
+            oli.innerText=  `this is ${i}`;
+            oUl.appendChild(oli)
+        }
+
+        oUl.onclick=(ev)=>{
+            var ev = ev || window.event;
+            if(ev.target.nodeName==='LI'){
+                ev.target.style.background='red';
+            }
+            console.log(ev.target)
+        }
+    </script>
+</body>
+</html>

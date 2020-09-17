@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .container{
+           width: 350px;
+           height: 550px;
+           margin: 50px auto;
+           border: 1px solid #000;
+       }
+       .nav{
+           width: 100%;
+           height: 100px;
+           background: skyblue;
+           display: flex;
+           justify-content: space-evenly;
+           align-items: center;
+       }
+       .navDetails{
+           width: 100px;
+           height: 100px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+            
+       }
+       .sel{
+           background: yellow;
+       }
+       .content{
+           width: 350px;
+           height: 300px;
+           margin-top: 30px;
+           background: yellow;
+           padding: 10px;
+           box-sizing: border-box;
+       }
+        
+    </style>
+</head>
+
+<body>
+    <div id="app">
+       <div class="container">
+            <div class="nav">
+                <div v-for='(item,index) in navData'  
+                v-bind:class='index === slected ? "navDetails sel" : "navDetails"'
+                v-on:click='navSlect(index)'>
+                    {{item}}
+                </div>
+            </div>
+            <div class="content">
+                <span 
+                v-for='(item,index) in navData' 
+                v-if='index === slected ? true : false'>
+                    {{item}}<br>
+                </span>
+            </div>
+       </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                navData:['html','css','js'],
+                slected:0,
+                 
+            },
+            methods: {
+                navSlect(index){
+                    this.slected = index
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

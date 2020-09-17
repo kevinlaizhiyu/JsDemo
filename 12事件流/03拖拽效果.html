@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽效果</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            background: yellow;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        function $(selector, all) {
+            return all ? document.querySelectorAll(selector) : document.querySelector(selector)
+        }
+
+        var oBox = $('.box');
+        oBox.onmousedown = (ev) => {
+            var shortX = ev.offsetX;
+            var shortY = ev.offsetY;
+
+            var pageX = document.documentElement.clientWidth-100;
+            var pageY = document.documentElement.clientHeight-100;
+        
+            console.log(shortX + '|' + shortY)
+            document.onmousemove = function (ev) {
+                var ev = ev || window.event;
+                var ps1 = ev.clientY-shortY;
+                var ps2 = ev.clientX-shortX;
+                oBox.style.top=`${(ps1<0?0:ps1)&&(ps1>pageY?pageY:ps1)}px`;
+                oBox.style.left=`${(ps2<0?0:ps2)&&(ps2>pageX?pageX:ps2)}px`;
+            }
+            document.onmouseup=function(ev){
+                document.onmousemove=null//这个就是取消执行事件的方法
+            }
+
+        }
+    </script>
+    <script>
+        function getStyle(obj,attr){
+            if(window.getComputedStyle){
+                return window.getComputedStyle(obj)[attr];
+            }else{
+                return obj.currentStyle[attr]
+            }
+        }
+        console.log(getStyle(oBox,'height'));
+        console.log(getStyle(oBox,'background'))
+    </script>
+
+
+</body>
+
+</html>

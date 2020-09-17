@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12拼接</title>
+</head>
+
+<body>
+    <script>
+        function rannum(min, max) {
+            if (!Number.isNaN(min) && !Number.isNaN(max)) {
+                return max > min ? parseInt(Math.random() * (max - min)) : parseInt(Math.random() * (min - max))
+            }
+        }
+
+        function $(selector, all) {
+            return all ? document.querySelectorAll(selector) : document.querySelector(selector)
+        }
+
+        var Top = document.documentElement.clientHeight - 10;
+        var Left = document.documentElement.clientWidth - 10;
+        var fragment = document.createDocumentFragment();
+        console.time('程序执行时间')
+        var str = '';
+        for (var i = 0; i < 5000; i++) {
+            str += `<div style="width:10px;height:10px;border-radius:5px;background:rgb(${rannum(0, 255)},${rannum(0, 255)},${rannum(0, 255)});position:absolute;top:${rannum(0, Top)}px;left:${rannum(0, Left)}px"></div>`
+        }
+        document.body.innerHTML=str       
+        console.timeEnd('程序执行时间')
+    </script>
+</body>
+
+</html>

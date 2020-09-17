@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标滚轮事件</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+        function $(selector,all) {
+            return all ? document.querySelectorAll(selector) : document.querySelector(selector)
+        }
+
+        function addEvent(obj,type,fn,bool){
+            return obj.addEventListener ? obj.addEventListener(type,fn,bool) : obj.attachEvent('on'+type,fn)
+        }
+        var oBox = $('.box')
+        oBox.onmousewheel=(ev)=>{
+            // alert(ev.wheelDelta)
+            if(ev.wheelDelta>0){
+                oBox.style.height = oBox.offsetHeight + 10 + 'px'
+            }else(
+                oBox.style.height = oBox.offsetHeight - 10 + 'px'
+            )
+        }
+
+    </script>
+</body>
+</html>

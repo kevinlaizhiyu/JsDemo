@@ -19,23 +19,12 @@
         var oSpan = document.createElement('span');
         var oContainer = document.querySelector('#container');
         var oUl = document.querySelector('ul')
-        // oContainer.appendChild(oSpan);
-        // oContainer.insertBefore(oSpan,oUl)
-        // oContainer.removeChild(oUl)
 
-        // oContainer.insertBefore(oSpan.cloneNode(true),oSpan)
-        // oContainer.insertBefore(oSpan.cloneNode(true),oSpan)
-        // oContainer.replaceChild(oUl,oSpan)
-        // oContainer.removeChild(oUl)
-        console.log(oUl.childNodes)
-        console.log(oUl.children)
-        console.log(oUl.childNodes[1].innerText,'<---nodeValue')
-        console.log(oUl.firstElementChild)
-        console.log(oUl.lastElementChild.nodeValue)
-        console.log(oUl.firstChild)
-        console.log(oUl.lastChild.nodeValue)
-
-
+        console.log(oUl.firstElementChild.previousSibling);
+        console.log(oUl.children[4].previousElementSibling.parentNode);
+        console.log(document.documentElement)
+        console.log(document.title)
+        console.log(document.body)
     </script>
 </body>
 </html>

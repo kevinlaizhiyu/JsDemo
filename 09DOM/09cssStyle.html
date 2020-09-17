@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            background: yellow;
+            color: red;
+            font-size: large;
+            /* position: absolute; */
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="contain" name='kevin'>
+        <ul>
+            <li class="index">111</li>
+            <li class="index">222</li>
+            <li class="index">333</li>
+            <li class="index">444</li>
+            <li class="index"><b>555</b></li>
+        </ul>
+    </div>
+    <script>
+        var oSpan = document.createElement('span');
+        var oContainer = document.querySelector('#container');
+        var oUl = document.querySelector('ul')
+        var aLi = oUl.children;
+
+        console.log(oContainer.offsetWidth)//元素自身的宽
+        console.log(oContainer.offsetHeight)//元素自身的高
+        console.log(oContainer.offsetLeft)//元素距离左边的位置
+        console.log(oContainer.offsetTop)//元素距离上方的位置
+
+        console.log(oUl.offsetParent)//获取定位父级的元素
+        
+        console.log(window.getComputedStyle(oContainer)['width'])
+        console.log(window.getComputedStyle(oContainer).width)
+
+        //console.log(oContainer.currentStyle.width) //已经不支持
+
+        console.log(oContainer.attributes);
+       
+        oContainer.setAttribute('data-sex','男')
+        console.log(oContainer.getAttribute('data-sex'))
+        oContainer.removeAttribute('data-sex')
+        console.log(oContainer.getAttribute('data-sex'))
+
+        for(var i=0; i<aLi.length; i++){
+            aLi[i].setAttribute('data-index',i)
+            console.log(aLi[i].attributes['data-index'].nodeValue)
+        }
+    </script>
+</body>
+</html>

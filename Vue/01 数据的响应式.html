@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .blue {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        .yellow{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <button @click='toggle(1,2,$event)'> toggle </button> -->
+        <button @click='colorChange'> toggle </button>
+        <div :class="color" v-if='show'></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                show: true,
+                color:'blue',
+            },
+            methods: {
+                toggle(num1, num2, e) {
+                    this.show = !this.show;
+                },
+                colorChange(){
+                    this.color==='blue'?(this.color='yellow'):(this.color='blue');
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
