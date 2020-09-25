@@ -1,0 +1,18 @@
+//对样式的封装
+.w(@px){
+    width:unit(@px/@remSize,rem)
+    /*
+     width:unit(187.5/37.5,rem)
+     =width:unit(5rem)
+    */
+}
+.h(@px){
+    height:unit(@px/@remSize,rem)
+    /*
+     width:unit(187.5/37.5,rem)
+     =width:unit(5rem)
+    */
+}
+.l_h(@px){
+    line-height: unit(@px/@remSize,rem);
+}
