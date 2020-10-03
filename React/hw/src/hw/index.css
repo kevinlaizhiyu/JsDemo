@@ -1,0 +1,16 @@
+.nav{
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+
+}
+.selected{
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background: yellow;
+}
