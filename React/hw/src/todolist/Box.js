@@ -3,6 +3,7 @@ import Input from './Input'
 import List from './List'
 
 class Box extends Component{
+    
     render(){
         return(
             <Fragment>

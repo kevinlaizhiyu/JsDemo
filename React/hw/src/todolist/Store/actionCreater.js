@@ -1,7 +1,15 @@
-import state from './state'
-export default (preState=state,actions)=>{
-    let newData = preState
-
-
-    return newData
+import store from './store'
+export default{
+    addList(msg){
+        store.dispatch({
+            type:'ADD_LIST',
+            payload:msg
+        })
+    },
+    delList(msg){
+        store.dispatch({
+            type:'DEL_LIST',
+            payload:msg
+        })
+    }
 }

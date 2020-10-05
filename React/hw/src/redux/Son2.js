@@ -1,12 +1,11 @@
 import React , {Component, Fragment } from 'react'
 import Store from './Store/Store'
 import actionCreater from './Store/ActionCreater'
-import connect from './Hoc/Hoc'
 import connect from 'react-redux'
 //connec的本质是一个方法，返回一个高阶组件 
 //connec()(处理的组件)
 
-class Box extends Component{
+class Son2 extends Component{
 
     componentDidMount(){
         Store.subscribe(()=>{
@@ -18,7 +17,7 @@ class Box extends Component{
         let {name,age} = Store.getState();
         return (
             <Fragment>
-                this is box component
+                this is Son2 component
                 <hr></hr>
                 {name}
                 <button onClick={actionCreater.changeName}>点击改名字</button>
@@ -30,4 +29,4 @@ class Box extends Component{
     }
 }
 
-export default connect(Box)
+export default Son2
