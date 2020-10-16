@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tr,
+        td{
+            width: 100px;
+            height: 30px;
+            border: 1px solid #000;
+            word-spacing: 10px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }  
+        
+        .blue {
+            background-color: skyblue;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .red {
+            background-color: rgb(245, 68, 23);
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .purple {
+            background-color: purple;
+        }
+        .cursor{
+            opacity: 0.3;
+        }
+
+    </style>
+</head>
+<script src="./base/react.min.js"></script>
+<script src="./base/react-dom.min.js"></script>
+<script src="./base/browser.min.js"></script>
+<body>
+    <div id="app">
+
+
+    </div>
+
+    <script type="text/babel">
+        let Component = React.createClass({
+            getInitialState(){
+                return {
+                    number:[1,2,3,4,5,6,7,8,9],
+                    color:[['blue','yellow'],['red','orange'],['purple','pink']],
+                    selected:0,
+                    onmove:null,
+                }
+            },
+            renderlistt(){
+                let {selected} = this.state;
+                return this.state.number.map((item,index)=>{
+                    return (
+                        <tr className={index%2===0?this.state.color[selected][0]:this.state.color[selected][1]}>{this.state.number.map((tditem,tdindex)=>{
+                            return tditem<=item?(
+                                <td  
+                                    is={`${item}${tditem}`}
+                                     
+                                    class={this.state.onmove==(`${item}${tditem}`)?'cursor':''} 
+                                    onMouseOver={this.move}>
+                                    {tditem}x{item}={item*tditem}    
+                                </td>):''
+                        })}</tr>
+                    )
+                })
+            },
+            move(e){
+                let {onmove} = this.state;
+                this.setState({
+                    onmove:e.target.getAttribute('is')
+                },()=>{
+                    console.log(this.state.onmove)
+                })
+            },
+            change(e){
+                let {selected} = this.state;
+                this.setState({
+                    selected : e.target.value
+                },()=>{console.log('sucess')})
+            },
+            render(){
+                return (
+                    <div>
+                        <table>{this.renderlistt()}</table>
+                        <select name="" id="" onChange={this.change}>
+                            {this.state.color.map((item,index)=>{
+                                return (
+                                    <option value={index}>{item}</option>
+                                )
+                            })}
+                        </select>
+                    </div>
+                    
+                    )
+            }
+        })
+        ReactDOM.render(<Component/>,document.getElementById('app'))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+
+.nav{
+    display:inline-block;
+    width: 150px;
+    height: 80px;
+    background: green;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    line-height: 80px;
+}
+.selected{
+    display: inline-block;
+    background: red;
+}

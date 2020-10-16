@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        localStorage.setItem('name','kevin')
+
+        function sayHello(){
+            //let name = localStorage.getItem('name');//假设这一步有一万行
+            console.log('hello',name)
+        }
+
+        function sayByebye(){
+            //let name = localStorage.getItem('name');//假设这一步有一万行
+            console.log('byebye',name)
+        }
+        // sayHello();
+        // sayByebye();
+
+        //创建一个高阶函数 目的是优化重复代码
+        function Hof(fun){
+            return ()=>{
+                let name = localStorage.getItem('name');//将重复操作的部分放到高阶函数中，到达简化高效的目的
+                fun(name)
+            }
+        }
+        Hof(sayHello)()
+
+    </script>
+</body>
+</html>

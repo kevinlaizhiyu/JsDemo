@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todolist</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        #container{
+            width: 400px;
+            height: 550px;
+            border-radius: 10px;
+            border: 1px solid #000;
+            margin: 10px auto;
+            
+        }
+        .header{
+            width: 100%;
+            height: 80px;
+            display: flex;
+            background-color: yellow;
+            font-size: 48px;
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+         
+        }
+        .input{
+            width: 100%;
+            height: 50px;
+            background-color: purple;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .inputText{
+            width: 300px;
+            height: 30px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+        .btn{
+            width: 40px;
+            height: 30px;
+            background-color: rgb(7, 163, 253);
+             
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="header">
+            todolist
+        </div>
+        <div class="input">
+            <input type="text" class="inputText" v-on:input='onInput'>
+            <button class="btn">确定</button>
+        </div>
+    </div>
+    <script>
+        let Component = new Vue({
+            el:"#container",
+            data:{
+                name:'kevin'
+            },
+            methods:{
+                onInput(e){
+                    console.log(e.target.value)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

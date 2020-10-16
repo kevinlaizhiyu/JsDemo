@@ -3,7 +3,7 @@ module.exports={
     devServer:{
         proxy:{
             '/hehe':{
-                target:'',//目标网址
+                target:'  ',//目标网址
                 changeOrigin:true,
                 pathRewrite:{
                     "^/hehe":''
