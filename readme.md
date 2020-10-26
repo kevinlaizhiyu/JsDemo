@@ -247,7 +247,9 @@ mapActions
 modules:{
     modeOne:{
         namespace:true //开启命名空间 ---> 主要给其他三个核心使用的
-        state:{name:'kevin'},
+        state:{
+            name:'kevin'
+            },
         mutations:{
             changeName(){
                 state.name='david'
