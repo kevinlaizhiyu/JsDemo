@@ -16,4 +16,45 @@
 >plugin 插件目录 (element-ui)
 >static 静态资源 此类文件不会被nuxt.js调用webpack进行构建编译处理
 >store 对应的全局状态管理
->nuxt.config.js nuxt的配置文件
+>nuxt.config.js nuxt的配置文件、
+
+## 配置
+1. npm install --save-dev node-sass sass-loader
+
+> nuxt.config.js文件内
+
+```
+css:[
+    '@assets/css/main.sass'
+]
+```
+2. 在对应路径下创建相应的文件夹以及文件
+
+>assets/css/main.sass文件下
+
+```
+$baseColor:red;
+
+body{
+    background:baseColor;
+}
+```
+
+> P.S.: 配置sass中出现的问题----要求样式代码写到一行里边
+> solution: 搜索 \.sass 
+> node_modules --> nuxt --> dist --> nuxt.js 
+
+```
+{
+    test:/\.sass$/,
+    oneOf:perfLoader.pollOneOf('css',styleLoader.apply('scss',{
+        loader:'sass-loader',
+        option:this.loaders.scss
+    }))
+}
+```
+
+在 nuxt.js 查找loader 下的 scss
+```
+indentedSyntax: false //是否缩进？ true 是（排列在一排） false否（可以多行显示）
+```
