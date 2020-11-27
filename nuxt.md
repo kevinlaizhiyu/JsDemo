@@ -247,4 +247,24 @@ export default {
 }
 ```
 
+### 资源文件
+> assets  webpack
 
+> static nowebpack 纯静态文件
+
+例如像background这样大的图片的话，可以放到这个assets下边耶可以放到static下边
+
+
+### 插件
+> 例如 axios 
+> npm install axios --save
+
+
+
+
+【需求】
+1. 导航条-企业必备点不动
+2. 导航条-联合送福利点不动
+3. 导航条-单品优惠之后的导航条没有激活样式
+
+4. 弹窗的样式修改-间距缩小
