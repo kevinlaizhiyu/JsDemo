@@ -1,15 +1,12 @@
+const e = require('express');
 const express = require('express');
 const app = express();
 const fs = require('fs');
 const nodemailer = require('nodemailer')
 
-
-app.get('/login/getcode',(req,res)=>{
-    let {email} = req.query;
-    fs.writeFileSync('./email.txt',email);
-
-    let code = parseInt(Math.random()*10000);
-
+function semdMail(email,code){
+    console.log('email', typeof email,email)
+    console.log('code', typeof code,code)
     let transporter = nodemailer.createTransport({
         "host": "smtp.qq.com",
         "port": 465,
@@ -24,7 +21,7 @@ app.get('/login/getcode',(req,res)=>{
         from : "KevinLai<kevinlaizhiyu@foxmail.com>",
         to : email,
         subject: "赖老板的验证码",
-        html:code,
+        html:`赖老板给您发送的验证码为：${code}，十分钟内有效，请勿分享给他人。`,
     } 
 
     transporter.sendMail(contents,(error)=>{
@@ -34,7 +31,18 @@ app.get('/login/getcode',(req,res)=>{
             console.log('邮件发送失败',error);
         }
     })
-    
+}
+
+
+app.get('/login/getcode',(req,res)=>{
+    let {email} = req.query;
+    fs.writeFileSync('./email.txt',email);
+    res.send({
+        info:`验证码已经发往您的邮箱:${email}`
+    })
+    let code = parseInt(Math.random()*10000);
+    semdMail(email,code)
+    fs.writeFileSync('./code.txt',code)
 })
 
 app.get('/login/checkcode',(req,res)=>{
@@ -42,11 +50,11 @@ app.get('/login/checkcode',(req,res)=>{
     let result = fs.readFileSync('./email.txt');
     if(checkcode===result){
         res.send({
-            success:true
+            success:'验证成功'
         })
     }else{
         res.send({
-            success:false
+            success:'验证失败'
         })
     }
 })
