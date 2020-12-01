@@ -1,8 +1,11 @@
-const e = require('express');
+
 const express = require('express');
 const app = express();
 const fs = require('fs');
 const nodemailer = require('nodemailer')
+const cors = require('cors')
+
+app.use(cors());
 
 function semdMail(email,code){
     console.log('email', typeof email,email)
@@ -47,7 +50,8 @@ app.get('/login/getcode',(req,res)=>{
 
 app.get('/login/checkcode',(req,res)=>{
     let {checkcode} = req.query;
-    let result = fs.readFileSync('./email.txt');
+    let result = fs.readFileSync('./code.txt','utf8');
+    console.log(result)
     if(checkcode===result){
         res.send({
             success:'验证成功'
